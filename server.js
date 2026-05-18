@@ -10,9 +10,18 @@ config();
 // Create HTTP Server
 const app = exp();
 //add cors
+// app.use(cors({
+//   origin:['http://localhost:5173', 'https://user-management-app-frontend-five.vercel.app']
+// }))
+
 app.use(cors({
-  origin:['http://localhost:5173']
-}))
+  origin: [
+    "http://localhost:5173",
+    "https://user-management-app-frontend-five.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true
+}));
 // Add body parser middleware
 app.use(exp.json());
 // Forward req to UserAPI if path starts with /user-api
